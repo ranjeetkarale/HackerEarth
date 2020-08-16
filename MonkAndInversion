@@ -1,0 +1,56 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace MonkAndInversion
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int NrOfTestCases = Convert.ToInt32(Console.ReadLine());
+            while (NrOfTestCases-- > 0)
+            {
+                int NrOfLines = Convert.ToInt16(Console.ReadLine());
+                int[,] arrayElements = new int[NrOfLines,NrOfLines];
+                List<int> tempList = new List<int>();
+                string[] matrixElements = new string[NrOfLines*NrOfLines];
+                int tempLines = NrOfLines;
+                while (tempLines-- > 0)
+                {
+                    matrixElements = Console.ReadLine().Split(' ');
+                    tempList.AddRange(matrixElements.Select(x => int.Parse(x)).ToList());
+                }
+                int k = 0;
+                for (int i = 0; i < NrOfLines; i++)
+                {
+                    for (int j = 0; j < NrOfLines; j++)
+                    {
+                        arrayElements[i, j] = tempList[k];
+                        k++;
+                    }
+                }
+                int sum = 0;
+                for (int i = 0; i < NrOfLines; ++i)
+                {
+                    for (int j = 0; j < NrOfLines; ++j)
+                    {
+                        for (int x = i; x < NrOfLines; ++x)
+                        {
+                            for (int m = j; m < NrOfLines; ++m)
+                            {
+                                if (arrayElements[i, j] > arrayElements[x, m])
+                                    sum++;
+                            }
+                        }
+                       
+                    }
+                }
+
+                 Console.WriteLine(sum);
+
+            }
+        }
+    }
+}
