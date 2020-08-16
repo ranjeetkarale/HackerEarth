@@ -46,7 +46,7 @@ namespace MonkAndRotation
                     Console.WriteLine(string.Join(" ", arrayElelments));
                 }
             }
-            Console.ReadLine();
+           // Console.ReadLine();
 
         }
     }
